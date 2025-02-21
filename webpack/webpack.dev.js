@@ -9,7 +9,7 @@ module.exports = merge(commonConfig, {
     },
     devServer: {
         compress: true, // 启动Gzip
-        port: 3000, // 端口
+        port: 3500, // 端口
         open: true, // 自动打开浏览器
             // 从目录提供静态文件的选项（默认是 'public' 文件夹）
         static: path.resolve(process.cwd(), "./public"),

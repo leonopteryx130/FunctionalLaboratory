@@ -45,7 +45,12 @@ module.exports = {
                     },
                 },
                 // 将 Sass 编译成 CSS
-                'sass-loader',
+                {
+                    loader: 'sass-loader',
+                    options: {
+                      api: 'modern' // 或者 'modern-compiler'
+                    }
+                }
             ],
         },]
     },
