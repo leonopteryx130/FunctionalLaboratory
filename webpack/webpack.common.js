@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+
 module.exports = {
     entry: {
         path: path.resolve(process.cwd(), "src/index")
@@ -29,7 +30,7 @@ module.exports = {
         },{
             test: /\.(s[ac]ss|css)$/i,
             use: [
-                // 将 JS 字符串生成为 style 节点s
+                // 将 JS 字符串生成为 style 节点
                 'style-loader',
                 // 将 CSS 转化成 CommonJS 模块
                 {
@@ -50,7 +51,20 @@ module.exports = {
                     options: {
                       api: 'modern' // 或者 'modern-compiler'
                     }
-                }
+                },
+                {
+                    loader: 'postcss-loader',
+                    options: {
+                        postcssOptions: {
+                            plugins: [
+                                require('postcss-pxtorem')({
+                                    rootValue: 16, // 根据设计稿的基准值设置
+                                    propList: ['*'], // 可以转换的属性，* 表示所有
+                                }),
+                            ],
+                        },
+                    },
+                },
             ],
         },]
     },
