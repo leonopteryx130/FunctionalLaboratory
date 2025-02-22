@@ -68,6 +68,7 @@ module.exports = {
             ],
         },]
     },
+
     plugins:[
         //webpack-dev-serve开启的时候也需要配置，因此这个插件在开发和打包时候都需要用到
         new HtmlWebpackPlugin({
