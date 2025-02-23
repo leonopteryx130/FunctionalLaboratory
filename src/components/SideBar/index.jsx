@@ -1,9 +1,21 @@
 import React from "react";
 
+import HomeSvg from '@/assets/icons/home.svg'
+import style from './index.scss';
+
 const SideBar = () => {
   return (
-    <div>
-      <h1>SideBar11</h1>
+    <div className={style.Container}>
+      <div className={style.Title}>Webapp Universe</div>
+      <div className={style.SideBarItems}>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+        }}>
+          <HomeSvg />
+          <div>主页</div>
+        </div>
+      </div>
     </div>
   );
 }

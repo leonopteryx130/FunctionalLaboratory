@@ -69,7 +69,16 @@ module.exports = {
                     },
                 },
             ],
-        },]
+        }, {
+            test: /\.svg$/,
+            use: [{
+                loader: '@svgr/webpack',
+                options: {
+                    // 禁用svg优化
+                    svgo: false
+                },
+            }],
+        }]
     },
 
     plugins:[
