@@ -1,3 +1,36 @@
 .Container {
-  width: 100vw;
+  flex: 1;
+  padding: 100px 215px 0 215px;
+}
+
+.Title {
+  font-size: 34px;
+  font-weight: bold;
+}
+
+.TitleDescription {
+  font-size: 16px;
+  color: #8e8e8e;
+  font-weight: 400;
+  margin: 8px 0;
+}
+
+.CardPicture {
+  width: 232px;
+  height: 232px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.CardName {
+  font-size: 20px;
+  margin: 8px 0;
+}
+
+.CardDescription {
+  font-size: 16px;
+  color: #8e8e8e;
+  font-weight: 400;
+  margin: 8px 0;
 }
