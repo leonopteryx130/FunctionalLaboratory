@@ -1,6 +1,7 @@
 import React from "react";
 
 import HomeSvg from '@/assets/icons/home.svg'
+import { px2rem } from "@/utils/commonUtils";
 import style from './index.scss';
 
 const SideBar = () => {
@@ -11,9 +12,14 @@ const SideBar = () => {
         <div style={{
           display: 'flex',
           alignItems: 'center',
+          cursor: 'pointer',
         }}>
-          <HomeSvg />
-          <div>主页</div>
+          <HomeSvg style={{
+            marginRight: px2rem(16),
+          }}/>
+          <div style={{
+            fontSize: px2rem(16),
+          }}>主页</div>
         </div>
       </div>
     </div>
