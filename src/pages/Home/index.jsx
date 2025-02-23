@@ -10,7 +10,7 @@ const Home = () => {
   console.log("Home", style);
 
   return (
-    <div className={style['Container']}>
+    <div className={style.Container}>
       <div style={{
         width: px2rem(100),
         backgroundColor: 'blue',

@@ -3,9 +3,10 @@ import { Routes, Route, Link } from "react-router-dom";
 
 import Home from './pages/Home';
 import ReactionTest from './pages/ReactionTest';
+import SideBar from '@/components/SideBar';
 import { rootFontSize, figmaWidth } from './utils/config';
 import { px2rem } from './utils/commonUtils';
-//import style from './App.scss'
+import style from './App.scss'
 
 function App() {
 
@@ -23,12 +24,8 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <div style={{
-        fontSize: px2rem(24),
-      }}>
-        back to Home
-      </div>
+    <div className={style.MainContainer}>
+      <SideBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ReactionTest" element={<ReactionTest />} />
