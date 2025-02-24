@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import { Routes, Route, Link } from "react-router-dom";
 
 import Home from './pages/Home';
-import ReactionTest from './pages/ReactionTest';
+import ReactionTest from '@/pages/ReactionTest';
 import SideBar from '@/components/SideBar';
 import { initPageLayout } from '@/utils/lifeCircle';
 import style from './App.scss'
@@ -23,10 +23,17 @@ function App() {
   return (
     <div className={style.MainContainer}>
       <SideBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/ReactionTest" element={<ReactionTest />} />
-      </Routes>
+      <div style={{
+        flex: 1,
+        overflowX: 'hidden',
+        overflowY: 'auto',
+        boxSizing: 'border-box',
+      }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/ReactionTest" element={<ReactionTest />} />
+        </Routes>
+      </div>
     </div>
   );
 }

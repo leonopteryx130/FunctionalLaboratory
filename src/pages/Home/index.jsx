@@ -28,7 +28,11 @@ const Home = () => {
                   module.showCards.map((card, index) => {
                     return (
                       <div key={index} onClick={() => navigate(card.router)}>
-                        <div>
+                        <div style={{
+                          width: px2rem(232),
+                          height: px2rem(232),
+                          overflow: 'hidden',
+                        }}>
                           <img className={style.CardPicture} src={card.pic} alt="" />
                         </div>
                         <div className={style.CardName}>{card.name}</div>

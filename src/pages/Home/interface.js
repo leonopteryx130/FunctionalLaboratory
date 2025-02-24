@@ -10,7 +10,7 @@ export const homePageModules = [
         name: '反应测试',
         describe: '通过鼠标点击，简单测试反应时间',
         pic: ReactingTestPic,
-        router: '@/assets/images/homePage/reactionTestImage.png'
+        router: '/ReactionTest',
       }
     ]
   }
