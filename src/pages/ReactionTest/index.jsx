@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 
+import CommonBackToHome from "@/components/CommonBackToHome";
 import style from './index.scss';
-import BackIcon from '@/assets/icons/back.svg';
-import { px2rem } from "../../utils/commonUtils";
 
 const Status = {
     UN_BEGAIN: 0, // 未开始阶段
@@ -12,8 +10,6 @@ const Status = {
 }
 
 const ReactionTest = () => {
-
-  const navigate = useNavigate();
 
   const [isMouseHover, setIsMouseHover] = useState(false);
   const [testStatus, setTestStatus] = useState(Status.UN_BEGAIN); // 测试状态
@@ -36,23 +32,7 @@ const ReactionTest = () => {
 
   return (
     <div className={style.Container}>
-      <div 
-        style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'flex-start',
-            width: "100%",
-            marginLeft: px2rem(80),
-            marginTop: px2rem(40),
-            marginBottom: px2rem(150),
-        }}
-        onClick={() => {
-            navigate('/');
-        }}
-      >
-        <BackIcon width={px2rem(32)} height={px2rem(32)}/>
-        <div className={style.BackText}>Back To Home</div>
-      </div>
+      <CommonBackToHome />
       <div 
         className={style.RoundButton} style={{
           backgroundColor: testStatus === Status.CLICK_TO_TEST? '#F48E09': '#8E8E8E', // 点击测试阶段变为橙色

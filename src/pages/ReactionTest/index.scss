@@ -4,22 +4,13 @@
   align-items: center;
 }
 
-.BackText {
-  font-size: 32px;
-  font-weight: lighter;
-  margin-left: 16px;
-  &:hover {
-    cursor: pointer;
-    color: #18B08F;
-  }
-}
-
 .RoundButton {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 350px;
   height: 350px;
+  margin-top: 150px;
   border-radius: 50%;
 }
 

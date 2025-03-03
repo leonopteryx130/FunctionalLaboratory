@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+}
+
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-top: 80px;
+}
+
+.pagesText {
+  font-size: 24px;
+  font-weight: 300;
+  margin-top: 20px;
+  color: #8E8E8E;
+}
+
+.rectsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  gap: 48px;
+  width: 600px;
+}
+
+.rect {
+  width: 88px;
+  height: 88px;
+  margin: 10px;
+  border-radius: 16px;
+}
+
+.begainButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  margin-top: 170px;
+  width: 170px;
+  height: 40px;
+  border-radius: 24px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: #0EB0FA;
+  cursor: pointer;
+  &:hover {
+    background-color: #A4DFFA;
+  }
+}

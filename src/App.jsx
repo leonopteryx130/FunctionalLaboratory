@@ -3,6 +3,7 @@ import { Routes, Route, Link } from "react-router-dom";
 
 import Home from './pages/Home';
 import ReactionTest from '@/pages/ReactionTest';
+import ColorSentivityTest from '@/pages/ColorSentivityTest';
 import SideBar from '@/components/SideBar';
 import { initPageLayout } from '@/utils/lifeCircle';
 import style from './App.scss'
@@ -32,6 +33,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/ReactionTest" element={<ReactionTest />} />
+          <Route path="/ColorSentivityTest" element={<ColorSentivityTest />} />
         </Routes>
       </div>
     </div>

@@ -1,0 +1,9 @@
+.BackText {
+  font-size: 32px;
+  font-weight: lighter;
+  margin-left: 16px;
+  &:hover {
+    cursor: pointer;
+    color: #18B08F;
+  }
+}

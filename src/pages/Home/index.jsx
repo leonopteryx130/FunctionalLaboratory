@@ -21,7 +21,7 @@ const Home = () => {
               <div style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: px2rem(16),
+                gap: px2rem(36),
                 marginTop: px2rem(42),
               }}>
                 {
