@@ -11,6 +11,13 @@ export const randomTF = () => {
 }
 
 /**
+ * 判断移动端还是PC端
+ */
+export const isMobile = () => {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+/**
  * 把N随机分成M份，每份不超过X
  * 
  * @param {number} N 

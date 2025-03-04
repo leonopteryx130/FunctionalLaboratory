@@ -8,8 +8,6 @@ import style from './index.scss';
 const Home = () => {
   const navigate = useNavigate();
 
-  console.log("Home", style);
-
   return (
     <div className={style.Container}>
       {

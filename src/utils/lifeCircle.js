@@ -6,12 +6,16 @@
  * 路由拦截，数据拦截等也可以放在这里边
  * 
  */
-import { rootFontSize, figmaWidth, figmaHeight } from '@/utils/config';
+import { rootFontSize, figmaWidth, figmaHeight, mobileFigmaWidth } from '@/utils/config';
+import { isMobile } from "@/utils/commonUtils";
 
 export const initPageLayout = () => {
   // 初始化页面布局
-    const scale = Math.max(document.documentElement.clientWidth, figmaWidth) / figmaWidth; // 屏幕宽度 / 设计稿宽度 = 缩放比例，最小为1
-    document.documentElement.style.fontSize = rootFontSize * scale + 'px'; // 1rem = 16px
-    document.documentElement.style.minWidth = figmaWidth + 'px'; // 设置最小宽度为设计稿宽度
-    document.documentElement.style.minHeight = figmaHeight + 'px'; // 设置最小高度为设计稿宽度 * 1.2
+  const width = isMobile()? mobileFigmaWidth: figmaWidth;
+  const height = isMobile()? document.documentElement.clientHeight: figmaHeight;
+
+  const scale = Math.max(document.documentElement.clientWidth, width) / width;
+  document.documentElement.style.fontSize = rootFontSize * scale + 'px'; // 1rem = 16px
+  document.documentElement.style.minWidth = width + 'px'; // 设置最小宽度为设计稿宽度
+  document.documentElement.style.minHeight = height + 'px'; // 移动端页面高度
 }

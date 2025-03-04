@@ -5,7 +5,9 @@ import Home from './pages/Home';
 import ReactionTest from '@/pages/ReactionTest';
 import ColorSentivityTest from '@/pages/ColorSentivityTest';
 import SideBar from '@/components/SideBar';
+import { isMobile } from "@/utils/commonUtils";
 import { initPageLayout } from '@/utils/lifeCircle';
+import MobilePages from '@/MobilePages';
 import style from './App.scss'
 
 function App() {
@@ -19,9 +21,16 @@ function App() {
         window.removeEventListener('resize');
       }
     })
-  }, []);
 
-  return (
+  }, []);
+  
+  return isMobile()? (
+    <div className={style.MainContainer}>
+      <Routes>
+        <Route path="/" element={<MobilePages />} />
+      </Routes>
+    </div>
+  ): (
     <div className={style.MainContainer}>
       <SideBar />
       <div style={{
