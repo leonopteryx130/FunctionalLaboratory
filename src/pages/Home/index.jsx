@@ -24,8 +24,14 @@ const Home = () => {
               }}>
                 {
                   module.showCards.map((card, index) => {
-                    return (
-                      <div key={index} onClick={() => navigate(card.router)}>
+                    return !card.isHidden && (
+                      <div 
+                        key={index} 
+                        onClick={() => card.isDisable? null: navigate(card.router)}
+                        style={{
+                          cursor: card.isDisable? 'not-allowed': 'pointer',
+                        }}
+                      >
                         <div style={{
                           width: px2rem(232),
                           height: px2rem(232),

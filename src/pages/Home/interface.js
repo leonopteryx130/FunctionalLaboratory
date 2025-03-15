@@ -18,12 +18,14 @@ export const homePageModules = [
         describe: '通过颜色识别，测试颜色敏感度',
         pic: ColorTestPic,
         router: '/ColorSentivityTest',
-      }/*{
+      }, {
         name: '二维码生成',
         describe: '生成二维码，方便分享',
         pic: QrCodeProductPic,
-        router: '/QrCodeProduct',
-      }*/
+        router: '/QrCode',
+        isDisable: true, // 是否禁用
+        //isHidden: true
+      }
     ]
   },
 ]

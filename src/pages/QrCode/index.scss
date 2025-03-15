@@ -1,0 +1,85 @@
+.Container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+}
+
+.ContentArea {
+  display: flex;
+  margin-top: 110px;
+  padding: 17px 46px;
+  width: 1160px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px 4px rgba(0, 0, 0, 0.08);
+}
+
+.OperateArea {
+  display: flex;
+  width: 680px;
+}
+
+.FunctionsChooseBar {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  width: 600px;
+  height: 64px;
+}
+
+.ChooseItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  box-sizing: border-box;
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+
+  p {
+    margin: 0 5px;
+    font-size: 14px;
+  }
+
+  &:hover {
+    background-color: #C5FFE1;
+    border: 1px solid #00BFA6;
+    color: #00BFA6;
+  }
+
+  &.ChooseItemActive {
+    background-color: #C5FFE1;
+    border: 1px solid #00BFA6;
+    color: #00BFA6;
+    cursor: pointer;
+  }
+}
+
+.TitleArea {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin: 20px 0;
+
+  p {
+    font-size: 24px;
+    font-weight: 600;
+  }
+}
+
+.SerialNumber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 4px;
+  margin-right: 13px;
+  background-color: #00BF9A;
+}
+

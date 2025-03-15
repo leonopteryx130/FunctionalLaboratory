@@ -1,13 +1,16 @@
 import React, {useEffect} from 'react';
 import { Routes, Route, Link } from "react-router-dom";
 
-import Home from './pages/Home';
+import { isMobile } from "@/utils/commonUtils";
+import { initPageLayout } from '@/utils/lifeCircle';
+
+import Home from '@/pages/Home';
 import ReactionTest from '@/pages/ReactionTest';
 import ColorSentivityTest from '@/pages/ColorSentivityTest';
 import SideBar from '@/components/SideBar';
-import { isMobile } from "@/utils/commonUtils";
-import { initPageLayout } from '@/utils/lifeCircle';
 import MobilePages from '@/MobilePages';
+import QrCode from '@/pages/QrCode';
+
 import style from './App.scss'
 
 function App() {
@@ -38,11 +41,13 @@ function App() {
         overflowX: 'hidden',
         overflowY: 'auto',
         boxSizing: 'border-box',
+        backgroundColor: '#F5F5F5',
       }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/ReactionTest" element={<ReactionTest />} />
           <Route path="/ColorSentivityTest" element={<ColorSentivityTest />} />
+          <Route path="/QrCode" element={<QrCode />} />
         </Routes>
       </div>
     </div>
