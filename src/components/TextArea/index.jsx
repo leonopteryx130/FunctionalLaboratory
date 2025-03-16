@@ -9,7 +9,6 @@ const TextArea = (props) => {
 
   const handleInput = (e) => {
     setText(e.target.value);
-    console.log(e.target.value);
     // 把输入的内容传递给父组件，并且传递当前文本长度和是否超出字数限制
     onInput && onInput({
       ...e,
@@ -17,7 +16,7 @@ const TextArea = (props) => {
       isOverLimit: e.target.value.length > maxTextNumLimit, // 是否超出字数限制
     });
   }
-  
+
   return (
     <div style={{
       position: 'relative',

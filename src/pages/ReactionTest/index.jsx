@@ -19,7 +19,7 @@ const ReactionTest = () => {
   useEffect(() => {
     if (testStatus === Status.WAIT_TO_CLICK) {
       const randomTime = Math.floor((Math.random() * 4 + 1) * 1000);
-      console.log('randomTime', randomTime);
+
       // 等待点击阶段，随机倒计时1-5s
       setTimeout(() => {
         setTestStatus(Status.CLICK_TO_TEST);

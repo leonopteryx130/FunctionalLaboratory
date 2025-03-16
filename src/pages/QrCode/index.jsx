@@ -3,13 +3,15 @@ import React, { useState } from "react";
 import CommonBackToHome from "@/components/CommonBackToHome";
 import Website from "./components/Website";
 import Text from "./components/Text";
+import Frame from "./components/Frame";
 
-import { QrCodeOptions } from "./interface";
+import { QrCodeOptions, DesignTabs, FrameStyles } from "./interface";
 import style from './index.scss';
 
 const QrCode = () => {
 
   const [qrCodeContentType, setQrCodeContentType] = useState(QrCodeOptions[0].value); // 二维码内容类型, 默认为选项第一个
+  const [designTab, setDesignTab] = useState(DesignTabs[0].value); // 二维码设计选项卡, 默认为选项第一个
   const [hoverIdx, setHoverIdx] = useState(null); // 鼠标悬浮的选项
   const [formData, setFormData] = useState(null); // 表单数据
 
@@ -18,16 +20,35 @@ const QrCode = () => {
     myLink.click();
   }
 
+  const handleGenerateBtn = () => {
+    console.log('formData', formData)
+  }
+
+  const handleInput = (e) => {
+    setFormData(e.target.value)
+  }
+
   const qrCodeContent = () => {
     switch (qrCodeContentType) {
       case 'Link':
-        return <Website handleInput={setFormData} />;
+        return <Website handleInput={handleInput} />;
       case 'Text':
-        return <Text handleInput={setFormData} />;
+        return <Text handleInput={handleInput} />;
       case 'Email':
         return <div>Email</div>;
       case 'Phone':
         return <div>Phone</div>;
+      default:
+        return null;
+    }
+  }
+
+  const qrCodeDesignComp = () => {
+    switch (designTab) {
+      case 'Frame':
+        return <Frame />;
+      case 'Style':
+        return <div>Style</div>;
       default:
         return null;
     }
@@ -81,7 +102,27 @@ const QrCode = () => {
               <div className={style.SerialNumber}>2</div>
               <p>Design your QR Code</p>
             </div>
-            <div>
+            <div className={style.designTabs}>
+              {
+                DesignTabs.map((tab, index) => {
+                  return (
+                    <div 
+                      key={index} 
+                      className={`${style.designTab} ${tab.value === designTab? style.designTabActive: ''}`}
+                      onClick={() => setDesignTab(tab.value)}
+                    >
+                      {tab.label}
+                    </div>
+                  )
+                })
+              }
+            </div>
+            <div className={style.designContainer}>
+              {
+                qrCodeDesignComp()
+              }
+            </div>
+            <div onClick={handleGenerateBtn} className={style.generateButton}>
               生成二维码
             </div>
           </div>

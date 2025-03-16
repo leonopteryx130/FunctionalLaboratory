@@ -10,7 +10,7 @@ const Input = (props) => {
       placeholder={placeholder || ""} 
       style={{
         ...style,
-        '--font-size': style.fontSize,
+        '--font-size': style?.fontSize || '14px',
       }}
     />
   )
