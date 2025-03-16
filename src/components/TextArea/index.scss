@@ -1,0 +1,23 @@
+.textAreaContainer {
+  position: relative;
+}
+
+textarea {
+
+  text-indent: 2px;
+  resize: none;
+
+  &::placeholder {
+    color: #8e8e8e; 
+    opacity: 1; 
+    font-size: var(--font-size);
+  }
+
+  &:focus {
+    outline: none;
+
+    &::placeholder {
+      color: transparent; 
+    }
+  }
+}

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import CommonBackToHome from "@/components/CommonBackToHome";
 import Website from "./components/Website";
+import Text from "./components/Text";
 
 import { QrCodeOptions } from "./interface";
 import style from './index.scss';
@@ -10,6 +11,7 @@ const QrCode = () => {
 
   const [qrCodeContentType, setQrCodeContentType] = useState(QrCodeOptions[0].value); // 二维码内容类型, 默认为选项第一个
   const [hoverIdx, setHoverIdx] = useState(null); // 鼠标悬浮的选项
+  const [formData, setFormData] = useState(null); // 表单数据
 
   const handleCall = () => {
     const myLink = document.getElementById('myLink');
@@ -19,9 +21,9 @@ const QrCode = () => {
   const qrCodeContent = () => {
     switch (qrCodeContentType) {
       case 'Link':
-        return <Website />;
+        return <Website handleInput={setFormData} />;
       case 'Text':
-        return <div>Text</div>;
+        return <Text handleInput={setFormData} />;
       case 'Email':
         return <div>Email</div>;
       case 'Phone':
@@ -78,6 +80,9 @@ const QrCode = () => {
             <div className={style.TitleArea}>
               <div className={style.SerialNumber}>2</div>
               <p>Design your QR Code</p>
+            </div>
+            <div>
+              生成二维码
             </div>
           </div>
         </div>
