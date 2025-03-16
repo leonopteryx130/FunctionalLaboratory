@@ -9,7 +9,7 @@
 .ContentArea {
   display: flex;
   margin-top: 110px;
-  padding: 17px 46px;
+  padding: 17px 0 17px 46px;
   width: 1160px;
   border-radius: 8px;
   box-shadow: 0 0 20px 4px rgba(0, 0, 0, 0.08);
@@ -133,4 +133,11 @@
   &:hover {
     background-color: #009F7F;
   } 
+}
+
+.qrCodeViewContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 40px 0;
 }

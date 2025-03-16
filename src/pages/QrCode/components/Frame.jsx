@@ -3,6 +3,7 @@ import { FrameStyles } from "../interface";
 
 import style from './Frame.scss';
 import Input from "@/components/Input";
+import { px2rem } from "@/utils/commonUtils";
 
 const Frame = () => {
 
@@ -35,16 +36,16 @@ const Frame = () => {
         }
       </div>
       <div style={{
-        marginTop: '20px',
+        marginTop: px2rem(20),
       }}>Phrase</div>
       <Input 
         style={{
-          width: '280px',
-          height: '44px',
-          marginTop: '16px',
-          borderRadius: '8px',
+          width: px2rem(280),
+          height: px2rem(44),
+          marginTop: px2rem(16),
+          borderRadius: px2rem(8),
           border: '1px solid #8E8E8E',
-          fontSize: '16px',
+          fontSize: px2rem(16),
         }}
       />
     </div>

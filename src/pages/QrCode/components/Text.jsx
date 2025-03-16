@@ -1,5 +1,6 @@
 import React from "react";
 import TextArea from "@/components/TextArea";
+import { px2rem } from "@/utils/commonUtils";
 
 const Text = (props) => {
 
@@ -10,15 +11,15 @@ const Text = (props) => {
       <TextArea 
         style={{
           width: '100%',
-          height: '90px',
+          height: px2rem(90),
           border: '0px solid #D9D9D9',
-          borderRadius: '4px',
-          padding: '10px',
+          borderRadius: px2rem(4),
+          padding: px2rem(10),
           boxSizing: 'border-box',
-          boxShadow: '0 0 20px 4px rgba(189,189,189, 0.1)',
-          fontSize: '16px',
+          boxShadow: `0 0 ${px2rem(20)} ${px2rem(4)} rgba(189,189,189, 0.1)`,
+          fontSize: px2rem(16),
           color: '#8E8E8E',
-          marginBottom: '20px',
+          marginBottom: px2rem(20),
         }} 
         placeholder="Write your text here" 
         maxTextNumLimit={100}

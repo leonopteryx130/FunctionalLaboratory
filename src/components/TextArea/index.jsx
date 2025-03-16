@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { px2rem } from "@/utils/commonUtils";
 import './index.scss';
 //import scssStyle from './index.scss';
 
@@ -34,9 +35,9 @@ const TextArea = (props) => {
         maxTextNumLimit && (
           <p style={{
             position: 'absolute',
-            bottom: '15px',
-            right: '10px',
-            fontSize: '12px',
+            bottom: px2rem(15),
+            right: px2rem(10),
+            fontSize: px2rem(10),
             color: text.length > maxTextNumLimit ? 'red' : '#8E8E8E',
           }}>字数限制 {text.length}/{maxTextNumLimit}</p>
         )

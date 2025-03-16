@@ -1,19 +1,28 @@
 import React, { useState } from "react";
+import { QRCodeSVG } from 'qrcode.react'; // 二维码生成库
 
 import CommonBackToHome from "@/components/CommonBackToHome";
 import Website from "./components/Website";
 import Text from "./components/Text";
 import Frame from "./components/Frame";
+import ViewQrcode from "./components/ViewQrcode";
 
 import { QrCodeOptions, DesignTabs, FrameStyles } from "./interface";
 import style from './index.scss';
+import { px2rem } from "../../utils/commonUtils";
 
 const QrCode = () => {
 
   const [qrCodeContentType, setQrCodeContentType] = useState(QrCodeOptions[0].value); // 二维码内容类型, 默认为选项第一个
   const [designTab, setDesignTab] = useState(DesignTabs[0].value); // 二维码设计选项卡, 默认为选项第一个
+
+  const [url, setUrl] = useState(''); // 链接
+  const [commonText, setCommonText] = useState(''); // 文本
+
   const [hoverIdx, setHoverIdx] = useState(null); // 鼠标悬浮的选项
   const [formData, setFormData] = useState(null); // 表单数据
+
+  const [qrCodeLink, setQrCodeLink] = useState(''); // 二维码链接
 
   const handleCall = () => {
     const myLink = document.getElementById('myLink');
@@ -21,11 +30,34 @@ const QrCode = () => {
   }
 
   const handleGenerateBtn = () => {
-    console.log('formData', formData)
+    console.log('formData', formData);
+    switch (qrCodeContentType) {
+      case 'Link':
+        // todo: 检查二维码链接是否合法
+        formData.url && setQrCodeLink(formData.url);
+    }
   }
 
   const handleInput = (e) => {
-    setFormData(e.target.value)
+    console.log('e', e.target.value);
+    switch (qrCodeContentType) {
+      case 'Link':
+        setFormData({
+          url: e.target.value,
+        })
+        break;
+      case 'Text':
+        setFormData({
+          text: e.target.value,
+        })
+        break;
+      case 'Email':
+        break;
+      case 'Phone':
+        break;
+      default:
+        break;
+    }
   }
 
   const qrCodeContent = () => {
@@ -92,7 +124,7 @@ const QrCode = () => {
             <div style={{
               display: 'flex',
               alignItems: 'center',
-              height: '90px',
+              height: px2rem(90),
             }}>
               {
                 qrCodeContent()
@@ -127,8 +159,9 @@ const QrCode = () => {
             </div>
           </div>
         </div>
-        <div style={{flex: 1}}>
+        <div className={style.qrCodeViewContainer} style={{flex: 1}}>
           {/* 二维码展示区域 */}
+          <ViewQrcode link={qrCodeLink} />
         </div>
       </div>
     </div>
