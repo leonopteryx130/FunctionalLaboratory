@@ -14,8 +14,8 @@ export const initPageLayout = () => {
   const width = isMobile()? mobileFigmaWidth: figmaWidth;
   const height = isMobile()? document.documentElement.clientHeight: figmaHeight;
 
-  const scaleWidth = Math.max(document.documentElement.clientWidth, Math.max(width, 1024)) / width;
-  const scaleHeight = Math.max(document.documentElement.clientHeight, Math.max(height, 768)) / height ;
+  const scaleWidth = Math.max(document.documentElement.clientWidth, 1024) / width;
+  const scaleHeight = Math.max(document.documentElement.clientHeight, 768) / height ;
   const scale = Math.min(scaleWidth, scaleHeight); // 取最小的缩放比例
   document.documentElement.style.fontSize = rootFontSize * scale + 'px'; // 1rem = 16px
   document.documentElement.style.minWidth = width + 'px'; // 设置最小宽度为设计稿宽度
