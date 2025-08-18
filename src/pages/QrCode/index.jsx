@@ -23,23 +23,50 @@ const QrCode = () => {
   const [formData, setFormData] = useState(null); // 表单数据
 
   const [qrCodeLink, setQrCodeLink] = useState(''); // 二维码链接
+  const [frameConfig, setFrameConfig] = useState({ frameStyleIndex: 0, frameStyle: 'None', phrase: '' });
 
   const handleCall = () => {
     const myLink = document.getElementById('myLink');
     myLink.click();
   }
 
-  const handleGenerateBtn = () => {
-    console.log('formData', formData);
-    switch (qrCodeContentType) {
-      case 'Link':
-        // todo: 检查二维码链接是否合法
-        formData.url && setQrCodeLink(formData.url);
+  const isValidUrl = (value) => {
+    try {
+      const hasScheme = /^(https?:)?\/\//i.test(value);
+      const normalized = hasScheme ? value : `https://${value}`;
+      new URL(normalized);
+      return true;
+    } catch (e) {
+      return false;
     }
   }
 
+  const buildPayload = () => {
+    switch (qrCodeContentType) {
+      case 'Link':
+        if (!formData?.url || formData.url.trim().length === 0) return '';
+        const raw = formData.url.trim();
+        const normalized = /^(https?:)?\/\//i.test(raw) ? raw : `https://${raw}`;
+        if (!isValidUrl(normalized)) return '';
+        return normalized;
+      case 'Text':
+        if (!formData?.text || formData.text.trim().length === 0) return '';
+        return formData.text.trim();
+      default:
+        return '';
+    }
+  }
+
+  const handleGenerateBtn = () => {
+    const payload = buildPayload();
+    if (!payload) {
+      alert(qrCodeContentType === 'Link' ? '请输入有效的网址' : '请输入文本');
+      return;
+    }
+    setQrCodeLink(payload);
+  }
+
   const handleInput = (e) => {
-    console.log('e', e.target.value);
     switch (qrCodeContentType) {
       case 'Link':
         setFormData({
@@ -78,7 +105,7 @@ const QrCode = () => {
   const qrCodeDesignComp = () => {
     switch (designTab) {
       case 'Frame':
-        return <Frame />;
+        return <Frame value={frameConfig} onChange={(v) => setFrameConfig(v)} />;
       case 'Style':
         return <div>Style</div>;
       default:
@@ -161,7 +188,7 @@ const QrCode = () => {
         </div>
         <div className={style.qrCodeViewContainer} style={{flex: 1}}>
           {/* 二维码展示区域 */}
-          <ViewQrcode link={qrCodeLink} />
+          <ViewQrcode link={qrCodeLink} frameConfig={frameConfig} />
         </div>
       </div>
     </div>

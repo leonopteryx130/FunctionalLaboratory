@@ -23,7 +23,7 @@ export const homePageModules = [
         describe: '生成二维码，方便分享',
         pic: QrCodeProductPic,
         router: '/QrCode',
-        isDisable: true, // 是否禁用
+        //isDisable: true, // 是否禁用
         //isHidden: true
       }
     ]

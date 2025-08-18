@@ -4,7 +4,7 @@ import './index.scss';
 //import scssStyle from './index.scss';
 
 const Input = (props) => {
-  const { style, placeholder, type, onInput } = props;
+  const { style, placeholder, type, onInput, value } = props;
 
   const handleInput = (e) => {
     // 把输入的内容传递给父组件，并且传递当前文本长度和是否超出字数限制
@@ -20,6 +20,7 @@ const Input = (props) => {
         '--font-size': style?.fontSize || px2rem(14),
       }}
       onInput={handleInput}
+      value={value}
     />
   )
 }
