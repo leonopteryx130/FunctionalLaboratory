@@ -12,12 +12,66 @@
   height: 350px;
   margin-top: 150px;
   border-radius: 50%;
+  position: relative;
+  transition: transform 160ms ease, box-shadow 200ms ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12) inset, 0 18px 40px rgba(0,0,0,0.12);
+}
+
+/* 等待阶段呼吸动画 */
+.Waiting {
+  animation: breathe 1.6s ease-in-out infinite;
+}
+
+/* 就绪阶段轻微跳动 */
+.Ready {
+  transform: scale(1.02);
+  box-shadow: 0 10px 30px rgba(244,142,9,0.35), 0 18px 40px rgba(244,142,9,0.25);
+}
+
+/* 过早点击震动 */
+.TooSoon {
+  animation: shake 400ms ease;
+}
+
+@keyframes breathe {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.015); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+.Ripple {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.55);
+  transform: translate(-50%, -50%) scale(0.8);
+  animation: ripple 400ms ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(3.2);
+  }
 }
 
 .ReactionTimeText {
   font-size: 56px;
   font-weight: bold;
   color: white;
+  text-shadow: 0 3px 8px rgba(0,0,0,0.2);
 }
 
 .Button {
@@ -32,6 +86,54 @@
   font-size: 36px;
   font-weight: bold;
   color: white;
+  transition: transform 120ms ease, box-shadow 200ms ease;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+.Button:active {
+  transform: scale(0.98);
+}
+
+.HUD {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 24px;
+  gap: 10px;
+}
+
+.Message {
+  color: #333;
+  font-size: 18px;
+}
+
+.Stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.Best {
+  font-size: 18px;
+  color: #2f7d32;
+  font-weight: bold;
+}
+
+.History {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.Tag {
+  background: #f1f3f4;
+  color: #444;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 14px;
 }
 
 .DescriptionText {
