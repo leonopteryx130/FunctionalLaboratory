@@ -28,7 +28,9 @@ export const QrCodeOptions = [
   {
     index: 3,
     value: 'Phone',
-    label: 'Phone'
+    label: 'Phone',
+    icon: <LinkIcon />,
+    iconActive: <LinkIconActive />
   },
   {
     index: 4,

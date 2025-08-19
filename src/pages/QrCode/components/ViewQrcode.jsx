@@ -9,6 +9,23 @@ const ViewQrcode = (props) => {
   const { link, frameConfig } = props;
   const svgWrapperRef = React.useRef(null);
 
+  // 检查是否为文本类型的二维码链接
+  const isTextQrCode = link && link.includes('150.158.147.14:9011/#/qrCode/pureText');
+  
+  // 从链接中提取文本内容
+  const getTextContent = () => {
+    if (!isTextQrCode) return '';
+    try {
+      const url = new URL(link);
+      const textParam = url.searchParams.get('text');
+      return textParam || '';
+    } catch (e) {
+      return '';
+    }
+  };
+
+  const textContent = getTextContent();
+
   const downloadSVG = () => {
     if (!link) return;
     const svgEl = svgWrapperRef.current?.querySelector('svg');
@@ -84,7 +101,6 @@ const ViewQrcode = (props) => {
       {
         link && link.length > 0? (
           <>
-            <p className={style.Link}>{link}</p>
             <div style={{ display: 'flex', gap: '12px' }}>
               <button onClick={downloadPNG}>Download PNG</button>
               <button onClick={downloadSVG}>Download SVG</button>

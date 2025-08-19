@@ -4,12 +4,14 @@ import { QRCodeSVG } from 'qrcode.react'; // 二维码生成库
 import CommonBackToHome from "@/components/CommonBackToHome";
 import Website from "./components/Website";
 import Text from "./components/Text";
+import Phone from "./components/Phone";
 import Frame from "./components/Frame";
 import ViewQrcode from "./components/ViewQrcode";
 
 import { QrCodeOptions, DesignTabs, FrameStyles } from "./interface";
 import style from './index.scss';
 import { px2rem } from "../../utils/commonUtils";
+import { envConfig } from "../../utils/config";
 
 const QrCode = () => {
 
@@ -51,7 +53,14 @@ const QrCode = () => {
         return normalized;
       case 'Text':
         if (!formData?.text || formData.text.trim().length === 0) return '';
-        return formData.text.trim();
+        const text = formData.text.trim();
+        // 将文本拼接到指定链接的text参数后
+        return `${envConfig.outSourcePage}/#/qrCode/pureText?text=${encodeURIComponent(text)}`;
+      case 'Phone':
+        if (!formData?.phone || formData.phone.trim().length === 0) return '';
+        const phone = formData.phone.trim();
+        // 将手机号拼接到指定链接的phone参数后
+        return `${envConfig.outSourcePage}/#/qrCode/phoneNumber?phone=${encodeURIComponent(phone)}`;
       default:
         return '';
     }
@@ -60,7 +69,21 @@ const QrCode = () => {
   const handleGenerateBtn = () => {
     const payload = buildPayload();
     if (!payload) {
-      alert(qrCodeContentType === 'Link' ? '请输入有效的网址' : '请输入文本');
+      let message = '';
+      switch (qrCodeContentType) {
+        case 'Link':
+          message = '请输入有效的网址';
+          break;
+        case 'Text':
+          message = '请输入文本';
+          break;
+        case 'Phone':
+          message = '请输入手机号';
+          break;
+        default:
+          message = '请输入内容';
+      }
+      alert(message);
       return;
     }
     setQrCodeLink(payload);
@@ -81,6 +104,9 @@ const QrCode = () => {
       case 'Email':
         break;
       case 'Phone':
+        setFormData({
+          phone: e.target.value,
+        })
         break;
       default:
         break;
@@ -96,7 +122,7 @@ const QrCode = () => {
       case 'Email':
         return <div>Email</div>;
       case 'Phone':
-        return <div>Phone</div>;
+        return <Phone handleInput={handleInput} />;
       default:
         return null;
     }
