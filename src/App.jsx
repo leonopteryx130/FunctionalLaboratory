@@ -11,6 +11,8 @@ import SideBar from '@/components/SideBar';
 import MobilePages from '@/MobilePages';
 import QrCode from '@/pages/QrCode';
 
+import Toast from '@/components/Toast/demo';
+
 import style from './App.scss'
 
 function App() {
@@ -48,6 +50,7 @@ function App() {
           <Route path="/ReactionTest" element={<ReactionTest />} />
           <Route path="/ColorSentivityTest" element={<ColorSentivityTest />} />
           <Route path="/QrCode" element={<QrCode />} />
+          <Route path="/TeastPage" element={<Toast />} />
         </Routes>
       </div>
     </div>

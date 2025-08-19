@@ -43,7 +43,13 @@ module.exports = {
                         importLoaders: 1,
                         modules: {
                             //auto: (resourcePath) => resourcePath.endsWith('.css') || resourcePath.endsWith('.less') || resourcePath.endsWith('.scss'),  // 匹配.css文件来进行css模块化。
-                            auto: /\.(s[ac]ss|css)$/i,
+                            auto: (resourcePath) => {
+                                // 为Toast组件的样式文件禁用CSS模块化
+                                if (resourcePath.includes('Toast') && resourcePath.includes('index.scss')) {
+                                    return false;
+                                }
+                                return /\.(s[ac]ss|css)$/i.test(resourcePath);
+                            },
                             localIdentName: '[local]_[hash:base64:10]', //在css后边添加10位的hash
                         },
                     },
