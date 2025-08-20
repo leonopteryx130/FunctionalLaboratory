@@ -6,6 +6,7 @@ import Website from "./components/Website";
 import Text from "./components/Text";
 import Phone from "./components/Phone";
 import Frame from "./components/Frame";
+import Style from "./components/Style";
 import ViewQrcode from "./components/ViewQrcode";
 
 import { QrCodeOptions, DesignTabs, FrameStyles } from "./interface";
@@ -26,6 +27,7 @@ const QrCode = () => {
 
   const [qrCodeLink, setQrCodeLink] = useState(''); // 二维码链接
   const [frameConfig, setFrameConfig] = useState({ frameStyleIndex: 0, frameStyle: 'None', phrase: '' });
+  const [styleConfig, setStyleConfig] = useState({ foregroundColor: '#000000', backgroundColor: '#FFFFFF', cornerRadius: 0, dotStyle: 'square' });
 
   const handleCall = () => {
     const myLink = document.getElementById('myLink');
@@ -133,7 +135,7 @@ const QrCode = () => {
       case 'Frame':
         return <Frame value={frameConfig} onChange={(v) => setFrameConfig(v)} />;
       case 'Style':
-        return <div>Style</div>;
+        return <Style value={styleConfig} onChange={(v) => setStyleConfig(v)} />;
       default:
         return null;
     }
@@ -214,7 +216,7 @@ const QrCode = () => {
         </div>
         <div className={style.qrCodeViewContainer} style={{flex: 1}}>
           {/* 二维码展示区域 */}
-          <ViewQrcode link={qrCodeLink} frameConfig={frameConfig} />
+          <ViewQrcode link={qrCodeLink} frameConfig={frameConfig} styleConfig={styleConfig} />
         </div>
       </div>
     </div>

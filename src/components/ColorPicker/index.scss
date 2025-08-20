@@ -1,0 +1,37 @@
+.colorPicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  .label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    white-space: nowrap;
+  }
+
+  .colorSquare {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    border: 2px solid #ddd;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  .colorInputContainer {
+    .colorInput {
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      padding: 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      
+      &:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+} 

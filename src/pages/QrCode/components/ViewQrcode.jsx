@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { QRCodeSVG } from 'qrcode.react'; // 二维码生成库
 import QrCodeGrayIcon from '@/assets/icons/qrCode_gray.svg';
 
@@ -6,8 +6,8 @@ import style from './ViewQrcode.scss';
 
 const ViewQrcode = (props) => {
 
-  const { link, frameConfig } = props;
-  const svgWrapperRef = React.useRef(null);
+  const { link, frameConfig, styleConfig } = props;
+  const svgWrapperRef = useRef(null);
 
   // 检查是否为文本类型的二维码链接
   const isTextQrCode = link && link.includes('150.158.147.14:9011/#/qrCode/pureText');
@@ -25,6 +25,56 @@ const ViewQrcode = (props) => {
   };
 
   const textContent = getTextContent();
+
+  // 应用自定义样式到生成的二维码
+  useEffect(() => {
+    if (svgWrapperRef.current && link && styleConfig) {
+      const svg = svgWrapperRef.current.querySelector('svg');
+      if (svg) {
+        // 应用圆角到背景
+        if (styleConfig.cornerRadius && styleConfig.cornerRadius > 0) {
+          const background = svg.querySelector('rect:first-child');
+          if (background) {
+            const size = 256;
+            const radius = (styleConfig.cornerRadius / 100) * size;
+            background.setAttribute('rx', radius);
+            background.setAttribute('ry', radius);
+          }
+        }
+
+        // 应用点样式
+        if (styleConfig.dotStyle && styleConfig.dotStyle !== 'square') {
+          const modules = svg.querySelectorAll('rect:not(:first-child)');
+          modules.forEach(module => {
+            if (styleConfig.dotStyle === 'dots') {
+              // 将矩形转换为圆形
+              const x = parseFloat(module.getAttribute('x'));
+              const y = parseFloat(module.getAttribute('y'));
+              const width = parseFloat(module.getAttribute('width'));
+              const height = parseFloat(module.getAttribute('height'));
+              const fill = module.getAttribute('fill');
+              
+              // 创建圆形元素
+              const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+              circle.setAttribute('cx', x + width / 2);
+              circle.setAttribute('cy', y + height / 2);
+              circle.setAttribute('r', width / 2);
+              circle.setAttribute('fill', fill);
+              
+              // 替换矩形
+              module.parentNode.replaceChild(circle, module);
+            } else if (styleConfig.dotStyle === 'rounded') {
+              // 应用圆角到矩形
+              const width = parseFloat(module.getAttribute('width'));
+              const radius = width * 0.2;
+              module.setAttribute('rx', radius);
+              module.setAttribute('ry', radius);
+            }
+          });
+        }
+      }
+    }
+  }, [link, styleConfig]);
 
   const downloadSVG = () => {
     if (!link) return;
@@ -82,7 +132,14 @@ const ViewQrcode = (props) => {
         link && link.length > 0? (
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <div ref={svgWrapperRef}>
-              <QRCodeSVG value={link} size={256} />
+              <QRCodeSVG 
+                value={link} 
+                size={256}
+                fgColor={styleConfig?.foregroundColor || '#000000'}
+                bgColor={styleConfig?.backgroundColor || '#FFFFFF'}
+                level="M"
+                includeMargin={true}
+              />
             </div>
             { showPhrase && (
               <div style={{
