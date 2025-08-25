@@ -10,6 +10,7 @@ import ColorSentivityTest from '@/pages/ColorSentivityTest';
 import SideBar from '@/components/SideBar';
 import MobilePages from '@/MobilePages';
 import QrCode from '@/pages/QrCode';
+import HandSpeedTest from '@/pages/HandSpeedTest';
 
 import Toast from '@/components/Toast/demo';
 
@@ -50,6 +51,7 @@ function App() {
           <Route path="/ReactionTest" element={<ReactionTest />} />
           <Route path="/ColorSentivityTest" element={<ColorSentivityTest />} />
           <Route path="/QrCode" element={<QrCode />} />
+          <Route path="/HandSpeedTest" element={<HandSpeedTest />} />
           <Route path="/TeastPage" element={<Toast />} />
         </Routes>
       </div>

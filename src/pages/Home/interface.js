@@ -1,7 +1,7 @@
 import ReactingTestPic from '@/assets/images/homePage/reactionTestImage.png'
 import ColorTestPic from '@/assets/images/homePage/colorTestImage.png'
 import QrCodeProductPic from '@/assets/images/homePage/qrCodeProductImage.png'
-
+import HandSpeedTestPic from '@/assets/images/homePage/handSpeed.png'
 // 首页功能块定义
 export const homePageModules = [
   {
@@ -23,8 +23,12 @@ export const homePageModules = [
         describe: '生成二维码，方便分享',
         pic: QrCodeProductPic,
         router: '/QrCode',
-        //isDisable: true, // 是否禁用
-        //isHidden: true
+      }, {
+        name: '手速测试',
+        describe: '测试手速，看看你的反应有多快',
+        pic: HandSpeedTestPic,
+        router: '/HandSpeedTest',
+        isDisable: true,
       }
     ]
   },

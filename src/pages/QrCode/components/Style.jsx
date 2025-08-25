@@ -9,8 +9,7 @@ const Style = (props) => {
   const defaultConfig = {
     foregroundColor: '#000000',
     backgroundColor: '#FFFFFF',
-    cornerRadius: 0,
-    dotStyle: 'square'
+    cornerRadius: 0
   };
 
   const currentConfig = value || defaultConfig;
@@ -30,20 +29,6 @@ const Style = (props) => {
     };
     onChange && onChange(newConfig);
   };
-
-  const handleDotStyleChange = (dotStyle) => {
-    const newConfig = {
-      ...currentConfig,
-      dotStyle
-    };
-    onChange && onChange(newConfig);
-  };
-
-  const dotStyleOptions = [
-    { value: 'square', label: '方形', icon: '■' },
-    { value: 'rounded', label: '圆角', icon: '●' },
-    { value: 'dots', label: '圆点', icon: '●' }
-  ];
 
   return (
     <div className={style.styleContainer}>
@@ -78,24 +63,6 @@ const Style = (props) => {
               </div>
             </div>
           </div>
-
-          <div className={style.section}>
-            <h3 className={style.sectionTitle}>点样式</h3>
-            <div className={style.dotStyleSection}>
-              {dotStyleOptions.map((option, index) => (
-                <div
-                  key={index}
-                  className={`${style.dotStyleOption} ${
-                    currentConfig.dotStyle === option.value ? style.active : ''
-                  }`}
-                  onClick={() => handleDotStyleChange(option.value)}
-                >
-                  <div className={style.dotStyleIcon}>{option.icon}</div>
-                  <span className={style.dotStyleLabel}>{option.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
 
         <div className={style.rightColumn}>
@@ -111,9 +78,7 @@ const Style = (props) => {
               <div 
                 className={style.qrDot}
                 style={{
-                  backgroundColor: currentConfig.foregroundColor,
-                  borderRadius: currentConfig.dotStyle === 'dots' ? '50%' : 
-                             currentConfig.dotStyle === 'rounded' ? '20%' : '0%'
+                  backgroundColor: currentConfig.foregroundColor
                 }}
               />
             </div>

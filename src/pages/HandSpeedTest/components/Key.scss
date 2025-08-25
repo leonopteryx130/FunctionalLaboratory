@@ -1,0 +1,24 @@
+.keyContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  position: relative;
+  border: none;
+  outline: none;
+  
+  &:hover {
+    box-shadow: 0 0 28px var(--glow-color, #00ff00) !important;
+    filter: brightness(1.2);
+  }
+  
+  &:active {
+    transform: translateY(2px);
+    box-shadow: 0 0 28px var(--glow-color, #00ff00) !important;
+  }
+}
