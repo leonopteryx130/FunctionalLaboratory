@@ -2,23 +2,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 20px;
-  padding: 12px 24px;
-  font-size: 16px;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 12px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
   position: relative;
   border: none;
   outline: none;
   
   &:hover {
-    box-shadow: 0 0 28px var(--glow-color, #00ff00) !important;
+    box-shadow: 0 0 20px var(--glow-color, #87ceeb) !important;
     filter: brightness(1.2);
   }
   
   &:active {
-    transform: translateY(2px);
-    box-shadow: 0 0 28px var(--glow-color, #00ff00) !important;
+    transform: translateY(1px);
+    box-shadow: 0 0 20px var(--glow-color, #87ceeb) !important;
   }
 }

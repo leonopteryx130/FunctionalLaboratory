@@ -1,6 +1,7 @@
 const {merge} = require('webpack-merge')
 const commonConfig = require('./webpack.common')
 const path = require('path')
+const webpack = require('webpack')
 
 module.exports = merge(commonConfig, {
     mode: "development",
@@ -21,5 +22,8 @@ module.exports = merge(commonConfig, {
         // 解决了使用react-router-dom 使用 BrowserRouter 模式时，在
         // 浏览器输入路由地址是会请求接口报错的问题
         historyApiFallback: true, 
-    }
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ]
 })

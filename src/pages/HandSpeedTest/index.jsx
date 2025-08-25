@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Key from './components/Key';
+import KeyBoard from './components/keyBoard';
 import { px2rem } from '../../utils/commonUtils';
 import './index.scss';
 
@@ -11,6 +12,7 @@ const HandSpeedTest = () => {
   };
 
   return (
+    <div>
     <div style={{
       margin: px2rem(20),
       display: 'flex',
@@ -30,7 +32,7 @@ const HandSpeedTest = () => {
         
         {/* 火焰橙色按钮 - 能量风格 */}
         <Key 
-          label="BOOST"
+          label="BOST"
           keyBackground="linear-gradient(45deg, #ff6b35, #f7931e, #ffd23f)"
           textColor="#ffffff"
           glowColor="#ff4500"
@@ -49,6 +51,8 @@ const HandSpeedTest = () => {
           height={120}
           onClick={handleKeyClick}
         />
+    </div>
+    <KeyBoard />
     </div>
   );
 };

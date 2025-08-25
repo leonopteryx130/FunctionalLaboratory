@@ -1,0 +1,51 @@
+.keyboardContainer,
+.keyboard-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #0f2a3d 0%, #1e3a5f 100%);
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(30, 58, 95, 0.4);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.keyboardMain,
+.keyboard-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.keyboardRow,
+.keyboard-row {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 4px;
+  justify-content: center;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// 响应式设计
+@media (max-width: 900px) {
+  .keyboardContainer,
+  .keyboard-container {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .keyboardContainer,
+  .keyboard-container {
+    padding: 10px;
+  }
+  
+  .keyboardRow,
+  .keyboard-row {
+    gap: 3px;
+    margin-bottom: 3px;
+  }
+} 
